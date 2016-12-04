@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "lerna": "2.0.0-beta.30"
+  },
+  "name": "hterm-contrib",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usirin/hterm-contrib.git"
+  },
+  "keywords": [
+    "hterm",
+    "utilities"
+  ],
+  "author": "Umut Sirin <umutsirin1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usirin/hterm-contrib/issues"
+  },
+  "homepage": "https://github.com/usirin/hterm-contrib#readme",
+  "description": ""
+}
