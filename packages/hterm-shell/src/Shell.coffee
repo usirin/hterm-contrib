@@ -25,14 +25,14 @@ export default class Shell extends Command
 
   runCommand: (cmd, args) ->
 
-    Command = Shell.commands.get cmd
+    Cmd = Shell.commands.get cmd
 
-    if Command
-      return runCommand(@io_, @rl_, Command, args).then =>
-        @rl_.prompt()
+    unless Cmd
+      @rl_.output.write "#{chalk.bold.red "error:"} command not found: '#{cmd}'\n"
+      return @rl_.prompt()
 
-    @rl_.output.write "#{chalk.bold.red "error:"} command not found: '#{cmd}'\n"
-    @rl_.prompt()
+    return runCommand(@io_, @rl_, Cmd, args).then => @rl_.prompt()
+
 
 
   onLine: (line) ->
