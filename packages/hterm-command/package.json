@@ -1,6 +1,6 @@
 {
   "name": "hterm-command",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "scripts": {
     "build:coffee": "coffee -o .tmp -c src",
@@ -33,7 +33,7 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "minimist": "^1.2.0",
-    "hterm-readline": "0.0.0"
+    "hterm-readline": "^0.0.1"
   },
   "repository": {
     "url": "git+https://github.com/usirin/hterm-contrib.git",
