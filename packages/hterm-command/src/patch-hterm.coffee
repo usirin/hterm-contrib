@@ -1,4 +1,4 @@
-import { assign } from 'lodash'
+import { assign, isObject } from 'lodash'
 
 export default patchHterm = (hterm) ->
   { Terminal } = hterm
