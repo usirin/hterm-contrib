@@ -1,0 +1,51 @@
+{
+  "name": "hterm-command",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "build:coffee": "coffee -o .tmp -c src",
+    "watch:coffee": "coffee -o .tmp -wc src",
+    "clean:coffee": "rimraf .tmp",
+    "build:babel": "babel .tmp src --out-dir lib",
+    "clean:babel": "rimraf lib",
+    "build": "npm run build:coffee && npm run build:babel && npm run clean:coffee",
+    "clean": "npm run clean:coffee && npm run clean:babel",
+    "test": "mocha --reporter spec --compilers coffee:./scripts/test.js",
+    "test:watch": "npm test -- --watch",
+    "prepublish": "npm run clean && npm run build",
+    "postpublish": "npm run clean"
+  },
+  "author": "Umut Sirin <umutsirin1@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "coffee-script": "^1.11.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "minimist": "^1.2.0",
+    "hterm-readline": "0.0.0"
+  },
+  "repository": {
+    "url": "git+https://github.com/usirin/hterm-contrib.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/usirin/hterm-contrib/issues"
+  },
+  "homepage": "https://github.com/usirin/hterm-contrib#readme",
+  "description": "Helpers for creating a hterm command.",
+  "keywords": [
+    "hterm",
+    "readline"
+  ]
+}
