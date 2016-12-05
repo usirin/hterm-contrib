@@ -1,5 +1,6 @@
 import readline, { InputStream, OutputStream } from 'hterm-readline'
 import { Command } from 'hterm-command'
+import { assign } from 'lodash'
 import minimist from 'minimist'
 import chalk from 'chalk'
 chalk.enabled = true
@@ -16,11 +17,13 @@ export default class Shell extends Command
 
   @commands = createCmdRegistry()
 
-  constructor: (options) ->
+  constructor: (options, config) ->
 
-    super options
+    super options, config
 
     @rl_ = null
+
+    @config_ = config
 
 
   runCommand: (cmd, args) ->
@@ -31,8 +34,9 @@ export default class Shell extends Command
       @rl_.output.write "#{chalk.bold.red "error:"} command not found: '#{cmd}'\n"
       return @rl_.prompt()
 
-    return runCommand(@io_, @rl_, Cmd, args).then => @rl_.prompt()
+    config = assign {}, @config_, { rl: rl_ }
 
+    return runCommand(@io_, Cmd, args, config).then => @rl_.prompt()
 
 
   onLine: (line) ->
@@ -69,8 +73,8 @@ export parseLine = (line) ->
     argString: argv.join ' '
   }
 
-export runCommand = (io, rl, Command, argString) ->
+export runCommand = (io, Command, argString, config) ->
   io.terminal_.runCommandClass(
-    Command, argString, { rl }
+    Command, argString, config
   )
 
