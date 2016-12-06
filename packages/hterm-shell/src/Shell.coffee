@@ -34,7 +34,7 @@ export default class Shell extends Command
       @rl_.output.write "#{chalk.bold.red "error:"} command not found: '#{cmd}'\n"
       return @rl_.prompt()
 
-    config = assign {}, @config_, { rl: rl_ }
+    config = assign {}, @config_, { rl: @rl_ }
 
     return runCommand(@io_, Cmd, argString, config).then (args...) =>
       @config_.onCommand { cmd, argString }, args...
