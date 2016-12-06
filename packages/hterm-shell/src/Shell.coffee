@@ -26,7 +26,7 @@ export default class Shell extends Command
     @config_ = config
 
 
-  runCommand: (cmd, args) ->
+  runCommand: (cmd, argString) ->
 
     Cmd = Shell.commands.get cmd
 
@@ -36,7 +36,9 @@ export default class Shell extends Command
 
     config = assign {}, @config_, { rl: rl_ }
 
-    return runCommand(@io_, Cmd, args, config).then => @rl_.prompt()
+    return runCommand(@io_, Cmd, argString, config).then (args...) =>
+      @config_.onCommand { cmd, argString }, args...
+      @rl_.prompt()
 
 
   onLine: (line) ->
